@@ -1,8 +1,103 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const topics = [
+	{
+		title: 'Медитации',
+		text: 'Аудиопрактики для расслабления, сна и внутреннего равновесия.',
+	},
+	{
+		title: 'Психология',
+		text: 'Понятные материалы о том, как лучше понимать себя и свои чувства.',
+	},
+	{
+		title: 'Разговоры',
+		text: 'Записи бесед на важные темы: отношения, тревога, поиск себя.',
+	},
+];
 ---
 
 <BaseLayout title="Главная">
-	<h1>Добро пожаловать</h1>
-	<p>Здесь скоро будет главная страница.</p>
+	<section class="hero">
+		<h1>Найдите время для себя</h1>
+		<p class="lead">
+			Медитации, психология и тёплые разговоры — в удобном формате, когда вам удобно.
+		</p>
+		<a href="/bundles" class="button">Смотреть бандлы</a>
+	</section>
+
+	<section class="topics">
+		<h2>Что вы здесь найдёте</h2>
+		<div class="cards">
+			{
+				topics.map((topic) => (
+					<article class="card">
+						<h3>{topic.title}</h3>
+						<p>{topic.text}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="cta">
+		<h2>Готовы начать?</h2>
+		<p>Выберите набор материалов, который подходит именно вам.</p>
+		<a href="/bundles" class="button">Выбрать бандл</a>
+	</section>
 </BaseLayout>
+
+<style>
+	section {
+		margin-bottom: 5rem;
+	}
+
+	.hero {
+		text-align: center;
+		padding-block: 3rem;
+	}
+
+	.hero h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		line-height: 1.2;
+		margin-bottom: 1rem;
+	}
+
+	.lead {
+		font-size: 1.2rem;
+		color: var(--color-muted);
+		max-width: 600px;
+		margin: 0 auto 2rem;
+	}
+
+	.topics h2,
+	.cta h2 {
+		text-align: center;
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	.card {
+		background: white;
+		border: 1px solid var(--color-border);
+		border-radius: 12px;
+		padding: 1.5rem;
+	}
+
+	.card h3 {
+		margin-top: 0;
+		color: var(--color-accent);
+	}
+
+	.cta {
+		text-align: center;
+		background: white;
+		border-radius: 12px;
+		padding: 3rem 1rem;
+	}
+</style>
