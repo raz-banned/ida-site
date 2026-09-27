@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { bundles } from '../data/bundles';
+
+function formatPrice(price: number, currency: string) {
+	return new Intl.NumberFormat('ru-RU', {
+		style: 'currency',
+		currency,
+		maximumFractionDigits: 0,
+	}).format(price);
+}
+---
+
+<BaseLayout title="Бандлы" description="Наборы медитаций и материалов по психологии">
+	<section class="intro">
+		<h1>Бандлы</h1>
+		<p>Выберите набор материалов. После покупки доступ открывается сразу.</p>
+	</section>
+
+	<div class="bundles">
+		{
+			bundles.map((bundle) => (
+				<article class:list={['bundle', { featured: bundle.featured }]}>
+					{bundle.featured && <span class="badge">Популярный</span>}
+					<h2>{bundle.title}</h2>
+					<p class="description">{bundle.description}</p>
+					<ul>
+						{bundle.includes.map((item) => <li>{item}</li>)}
+					</ul>
+					<p class="price">{formatPrice(bundle.price, bundle.currency)}</p>
+					<a href={bundle.purchaseUrl ?? '#'} class="button">
+						Купить
+					</a>
+				</article>
+			))
+		}
+	</div>
+</BaseLayout>
+
+<style>
+	.intro {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.intro p {
+		color: var(--color-muted);
+	}
+
+	.bundles {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+		align-items: stretch;
+	}
+
+	.bundle {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		background: white;
+		border: 1px solid var(--color-border);
+		border-radius: 12px;
+		padding: 2rem 1.5rem;
+	}
+
+	.bundle.featured {
+		border: 2px solid var(--color-accent);
+	}
+
+	.badge {
+		position: absolute;
+		top: -0.8rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--color-accent);
+		color: white;
+		font-size: 0.8rem;
+		padding: 0.2rem 0.8rem;
+		border-radius: 999px;
+	}
+
+	.bundle h2 {
+		margin-top: 0;
+	}
+
+	.description {
+		color: var(--color-muted);
+	}
+
+	ul {
+		padding-left: 1.2rem;
+		flex: 1;
+	}
+
+	.price {
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin-block: 1rem;
+	}
+
+	.button {
+		text-align: center;
+	}
+</style>
