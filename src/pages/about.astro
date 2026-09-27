@@ -2,112 +2,117 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const credentials = [
-	'Образование в области психологии (заглушка)',
-	'Сертификат по практикам осознанности (заглушка)',
-	'Более 10 лет практики (заглушка)',
+  'Образование в области психологии (заглушка)',
+  'Сертификат по практикам осознанности (заглушка)',
+  'Более 10 лет практики (заглушка)',
 ];
 
 const principles = [
-	{
-		title: 'Бережность',
-		text: 'Каждый движется в своём темпе — без давления и оценок.',
-	},
-	{
-		title: 'Простота',
-		text: 'Сложные вещи объясняю понятным языком.',
-	},
-	{
-		title: 'Практичность',
-		text: 'То, что можно применить в жизни уже сегодня.',
-	},
+  {
+    title: 'Бережность',
+    text: 'Каждый движется в своём темпе — без давления и оценок.',
+  },
+  {
+    title: 'Простота',
+    text: 'Сложные вещи объясняю понятным языком.',
+  },
+  {
+    title: 'Практичность',
+    text: 'То, что можно применить в жизни уже сегодня.',
+  },
 ];
 ---
 
 <BaseLayout title="Обо мне" description="Кто я и как я работаю">
-	<section class="intro">
-		<div class="photo" aria-hidden="true">Фото</div>
-		<div>
-			<h1>Обо мне</h1>
-			<p>
-				Здравствуйте! Меня зовут Ида. Здесь будет несколько абзацев о том, кто я, как пришла
-				к психологии и медитациям и чем могу быть полезна.
-			</p>
-			<p>
-				Второй абзац — о том, для кого эти материалы и чего можно от них ожидать.
-			</p>
-		</div>
-	</section>
+  <section class="intro">
+    <div class="photo" aria-hidden="true">
+      Фото
+    </div>
+    <div>
+      <h1>Обо мне</h1>
+      <p>
+        Здравствуйте! Меня зовут Ида. Здесь будет несколько абзацев о том, кто
+        я, как пришла к психологии и медитациям и чем могу быть полезна.
+      </p>
+      <p>
+        Второй абзац — о том, для кого эти материалы и чего можно от них
+        ожидать.
+      </p>
+    </div>
+  </section>
 
-	<section>
-		<h2>Мой подход</h2>
-		<div class="principles">
-			{
-				principles.map((item) => (
-					<div>
-						<h3>{item.title}</h3>
-						<p>{item.text}</p>
-					</div>
-				))
-			}
-		</div>
-	</section>
+  <section>
+    <h2>Мой подход</h2>
+    <div class="principles">
+      {principles.map((item) => (
+        <div>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-	<section>
-		<h2>Образование и опыт</h2>
-		<ul>
-			{credentials.map((item) => <li>{item}</li>)}
-		</ul>
-	</section>
+  <section>
+    <h2>Образование и опыт</h2>
+    <ul>
+      {credentials.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
 
-	<section class="cta">
-		<a href="/bundles" class="button">Посмотреть бандлы</a>
-	</section>
+  <section class="cta">
+    <a href="/bundles" class="button">
+      Посмотреть бандлы
+    </a>
+  </section>
 </BaseLayout>
 
 <style>
-	section {
-		margin-bottom: 4rem;
-	}
+  section {
+    margin-bottom: 4rem;
+  }
 
-	.intro {
-		display: grid;
-		grid-template-columns: 280px 1fr;
-		gap: 3rem;
-		align-items: center;
-	}
+  .intro {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
 
-	.photo {
-		aspect-ratio: 3 / 4;
-		background: var(--color-border);
-		border-radius: 12px;
-		display: grid;
-		place-items: center;
-		color: var(--color-muted);
-	}
+  .photo {
+    aspect-ratio: 3 / 4;
+    background: var(--color-border);
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: var(--color-muted);
+  }
 
-	.principles {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-		gap: 2rem;
-	}
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
 
-	.principles h3 {
-		color: var(--color-accent);
-		margin-bottom: 0.5rem;
-	}
+  .principles h3 {
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
 
-	.cta {
-		text-align: center;
-	}
+  .cta {
+    text-align: center;
+  }
 
-	@media (max-width: 700px) {
-		.intro {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-		}
+  @media (max-width: 700px) {
+    .intro {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
 
-		.photo {
-			max-width: 280px;
-		}
-	}
+    .photo {
+      max-width: 280px;
+    }
+  }
 </style>

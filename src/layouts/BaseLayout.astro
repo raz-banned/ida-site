@@ -2,8 +2,8 @@
 import '../styles/global.css';
 
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
 
 const { title, description = 'Медитации и психология' } = Astro.props;
@@ -11,82 +11,83 @@ const siteName = 'Ida';
 ---
 
 <html lang="ru">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<title>{title} — {siteName}</title>
-	</head>
-	<body>
-		<header class="site-header">
-			<div class="container header-inner">
-				<a href="/" class="logo">{siteName}</a>
-				<nav>
-					<a href="/">Главная</a>
-					<a href="/about">Обо мне</a>
-					<a href="/free">Попробовать</a>
-					<a href="/bundles">Бандлы</a>
-				</nav>
-			</div>
-		</header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title} — {siteName}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">
+          {siteName}
+        </a>
+        <nav>
+          <a href="/">Главная</a>
+          <a href="/about">Обо мне</a>
+          <a href="/free">Попробовать</a>
+          <a href="/bundles">Бандлы</a>
+        </nav>
+      </div>
+    </header>
 
-		<main class="container">
-			<slot />
-		</main>
+    <main class="container">
+      <slot />
+    </main>
 
-		<footer class="site-footer">
-			<div class="container">
-				© {new Date().getFullYear()} {siteName}
-			</div>
-		</footer>
-	</body>
+    <footer class="site-footer">
+      <div class="container">
+        © {new Date().getFullYear()} {siteName}
+      </div>
+    </footer>
+  </body>
 </html>
 
 <style>
-	.site-header {
-		border-bottom: 1px solid var(--color-border);
-	}
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+  }
 
-	.header-inner {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-block: 1rem;
-	}
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+  }
 
-	.logo {
-		font-size: 1.4rem;
-		font-weight: 600;
-		text-decoration: none;
-		color: var(--color-text);
-	}
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text);
+  }
 
-	nav {
-		display: flex;
-		gap: 1.5rem;
-	}
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
 
-	nav a {
-		text-decoration: none;
-		color: var(--color-muted);
-	}
+  nav a {
+    text-decoration: none;
+    color: var(--color-muted);
+  }
 
-	nav a:hover {
-		color: var(--color-accent);
-	}
+  nav a:hover {
+    color: var(--color-accent);
+  }
 
-	main {
-		flex: 1;
-		padding-block: 3rem;
-	}
+  main {
+    flex: 1;
+    padding-block: 3rem;
+  }
 
-	.site-footer {
-		border-top: 1px solid var(--color-border);
-		padding-block: 1.5rem;
-		color: var(--color-muted);
-		font-size: 0.9rem;
-	}
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: 1.5rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
 </style>
-
